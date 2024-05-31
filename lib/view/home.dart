@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
-import 'package:newsapp/modules/category_module.dart';
-// ignore: depend_on_referenced_packages
-import 'package:newsapp/widgets/categorycard.dart';
-// ignore: depend_on_referenced_packages
-import 'package:newsapp/widgets/categorytile.dart';
+import 'package:newsapp/widgets/CategoryCardView.dart';
+import 'package:newsapp/widgets/CategoryTileView.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,8 +26,8 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
+      body: const CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: Column(
@@ -39,27 +35,12 @@ class HomeScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 200,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categories.length,
-                    itemBuilder: (context, i) {
-                      return Categorycard(
-                        ctgry: categories[i],
-                      );
-                    },
-                  ),
+                  child: CategoryCardView(),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: categories.length,
-                    itemBuilder: (context, i) {
-                      return CategoryTile(ctr: categories[i]);
-                    },
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: CategoryTileView(),
                 ),
               ],
             ),

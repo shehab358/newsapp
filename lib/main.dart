@@ -3,7 +3,7 @@ import 'package:newsapp/services/news_services.dart';
 import 'package:newsapp/view/home.dart';
 
 void main() {
-  NewsServices().getnews();
+  NewsServices().getNews();
   runApp(
     const MaterialApp(
       home: HomeScreen(),
