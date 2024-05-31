@@ -4,7 +4,7 @@ import 'package:newsapp/modules/article_module.dart';
 class CategoryTile extends StatelessWidget {
   const CategoryTile({super.key, required this.article});
 
-  final ArticleModule article;
+  final ArticleModel article;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class CategoryTile extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: Image.network(
-            article.imageUrl ?? "assets/general.avif",
+            article.image ?? "assets/general.avif",
             height: 200,
             width: double.infinity,
             fit: BoxFit.cover,

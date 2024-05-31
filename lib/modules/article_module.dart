@@ -1,18 +1,16 @@
-class ArticleModule {
-  final String? imageUrl;
+class ArticleModel {
+  final String? image;
   final String title;
   final String? subTitle;
-  final Source source;
-  ArticleModule(
-      {required this.source,
-      required this.imageUrl,
-      required this.title,
-      required this.subTitle});
-}
 
-class Source {
-  final String id;
-  final String name;
+  ArticleModel(
+      {required this.image, required this.title, required this.subTitle});
 
-  Source({required this.id, required this.name});
+  factory ArticleModel.fromJson(json) {
+    return ArticleModel(
+      image: json['urlToImage'],
+      title: json['title'],
+      subTitle: json['description'],
+    );
+  }
 }

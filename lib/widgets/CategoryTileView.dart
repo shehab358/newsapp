@@ -11,8 +11,9 @@ class CategoryTileView extends StatefulWidget {
 }
 
 class _CategoryTileViewState extends State<CategoryTileView> {
-  List<ArticleModule> articles = [];
+  List<ArticleModel> articles = [];
 
+  bool isLoading = true;
   @override
   void initState() {
     super.initState();
@@ -21,18 +22,23 @@ class _CategoryTileViewState extends State<CategoryTileView> {
 
   Future<void> getGeneralNews() async {
     articles = await NewsServices().getNews();
+    isLoading = false;
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: articles.length,
-      itemBuilder: (context, i) {
-        return CategoryTile(article: articles[i]);
-      },
-    );
+    return isLoading
+        ? const CircularProgressIndicator(
+            color: Colors.blue,
+          )
+        : ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: articles.length,
+            itemBuilder: (context, i) {
+              return CategoryTile(article: articles[i]);
+            },
+          );
   }
 }
