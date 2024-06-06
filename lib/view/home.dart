@@ -26,20 +26,20 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: const CustomScrollView(
-        physics: BouncingScrollPhysics(),
+      body:  CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 200,
                   child: CategoryCardView(),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: CategoryTileView(),
                 ),
               ],
