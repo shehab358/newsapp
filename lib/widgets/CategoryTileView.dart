@@ -32,13 +32,15 @@ class _CategoryTileViewState extends State<CategoryTileView> {
         ? const CircularProgressIndicator(
             color: Colors.blue,
           )
-        : ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: articles.length,
-            itemBuilder: (context, i) {
-              return CategoryTile(article: articles[i]);
-            },
-          );
+        : articles.isNotEmpty
+            ? ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: articles.length,
+                itemBuilder: (context, i) {
+                  return CategoryTile(article: articles[i]);
+                },
+              )
+            : const Text("Error");
   }
 }
