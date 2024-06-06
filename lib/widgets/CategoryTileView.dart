@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/modules/article_module.dart';
 import 'package:newsapp/services/news_services.dart';
-import 'package:newsapp/widgets/categorytile.dart';
+import 'package:newsapp/widgets/CategoryTileViewBuilder.dart';
 
 class CategoryTileView extends StatefulWidget {
   const CategoryTileView({super.key});
@@ -11,36 +10,14 @@ class CategoryTileView extends StatefulWidget {
 }
 
 class _CategoryTileViewState extends State<CategoryTileView> {
-  List<ArticleModel> articles = [];
-
   bool isLoading = true;
   @override
-  void initState() {
-    super.initState();
-    getGeneralNews();
-  }
-
-  Future<void> getGeneralNews() async {
-    articles = await NewsServices().getNews();
-    isLoading = false;
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const CircularProgressIndicator(
-            color: Colors.blue,
-          )
-        : articles.isNotEmpty
-            ? ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: articles.length,
-                itemBuilder: (context, i) {
-                  return CategoryTile(article: articles[i]);
-                },
-              )
-            : const Text("Error");
+    return FutureBuilder(
+        future: NewsServices().getNews(),
+        builder: (context, snapshot) {
+          return CategoryTileViewBuilder(articles: snapshot.data ?? []);
+        });
   }
 }
