@@ -15,7 +15,7 @@ class Categorycard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Categoryview();
+              return Categoryview(category: ctgry.category,);
             },
           ),
         );

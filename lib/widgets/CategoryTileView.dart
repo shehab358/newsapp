@@ -1,14 +1,11 @@
-// ignore: file_names
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:newsapp/services/news_services.dart';
 import 'package:newsapp/widgets/CategoryTileViewBuilder.dart';
 
 // ignore: must_be_immutable
 class CategoryTileView extends StatefulWidget {
-  CategoryTileView({super.key});
-
+  const CategoryTileView({super.key, required this.category});
+final String category;
   @override
   State<CategoryTileView> createState() => _CategoryTileViewState();
 }
@@ -18,7 +15,7 @@ class _CategoryTileViewState extends State<CategoryTileView> {
   late Future future;
   @override
   void initState() {
-    future = NewsServices().getNews();
+    future = NewsServices().getNews(category: widget.category);
     super.initState();
   }
 

@@ -4,10 +4,10 @@ import 'package:newsapp/modules/article_module.dart';
 class NewsServices {
   final Dio dio = Dio();
 
-  Future<List<ArticleModel>> getNews() async {
+  Future<List<ArticleModel>> getNews({required String category}) async {
     try {
       Response response = await dio.get(
-          'https://newsdata.io/api/1/latest?country=eg&apikey=pub_45762471aae685a37e929b25b4a3e14215606');
+          'https://newsdata.io/api/1/latest?country=eg&apikey=pub_45762471aae685a37e929b25b4a3e14215606&category=$category');
       Map<String, dynamic> jasonData = response.data;
       List<dynamic> articles = jasonData["results"];
 
