@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:newsapp/widgets/CategoreyCardViewBuilder.dart';
 
@@ -6,7 +7,7 @@ class CategoryCardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CategoreyCardViewBuilder();
+    return const CategoreyCardViewBuilder();
   }
 }
 

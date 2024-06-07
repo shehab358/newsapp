@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:newsapp/services/news_services.dart';
 import 'package:newsapp/widgets/CategoryTileViewBuilder.dart';
